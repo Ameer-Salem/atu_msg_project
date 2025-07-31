@@ -1,21 +1,36 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:atu_msg_project/pages/home_page.dart';
+import 'package:atu_msg_project/theme/theme.dart';
+import 'package:atu_msg_project/theme/util.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    AdaptiveTheme(
-      light: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+
+  TextTheme textTheme = createTextTheme(context, 'Fredoka', "Fredoka");
+    
+    return AdaptiveTheme(
+      dark: MaterialTheme(textTheme).dark(),
+      light: MaterialTheme(textTheme).light(),
       initial: AdaptiveThemeMode.system,
-      builder: (theme, darkTheme) => MaterialApp(
-        theme: theme,
-        darkTheme: darkTheme,
-        debugShowCheckedModeBanner: false,
-        home: HomePage(),
-      ),
-    ),
-  );
+      builder: (theme, darkTheme) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: theme,
+          darkTheme: darkTheme,
+          home: const HomePage(),
+        );
+      },
+    );
+  }
 }
