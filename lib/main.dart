@@ -1,7 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:atu_msg_project/pages/home_page.dart';
-import 'package:atu_msg_project/theme.dart';
-import 'package:atu_msg_project/util.dart';
+import 'package:atu_msg_project/presentation/pages/home_page.dart';
+import 'package:atu_msg_project/config/theme.dart';
+import 'package:atu_msg_project/config/util.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: theme,
           darkTheme: darkTheme,
-          home: const HomePage(),
+          home: SafeArea(child: const HomePage()),
         );
       },
     );
