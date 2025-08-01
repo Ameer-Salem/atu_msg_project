@@ -1,5 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:atu_msg_project/pages/home_page.dart';
+import 'package:atu_msg_project/presentation/pages/home_page.dart';
 import 'package:atu_msg_project/theme/theme.dart';
 import 'package:atu_msg_project/theme/util.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: theme,
           darkTheme: darkTheme,
-          home: const HomePage(),
+          home: HomePage(),
         );
       },
     );
