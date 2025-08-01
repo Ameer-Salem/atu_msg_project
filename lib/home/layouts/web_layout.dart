@@ -1,4 +1,5 @@
 import 'package:atu_msg_project/home/home_controller.dart';
+import 'package:atu_msg_project/home/widgets/chats_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,9 +20,9 @@ class WebLayout extends StatelessWidget {
           ),
           VerticalDivider(),
           Flexible(
-            fit: FlexFit.loose,
+            fit: FlexFit.tight,
             flex: 3,
-            child: Center(child: Text('very wide')),
+            child: ChatsList(),
           ),
           VerticalDivider(),
           Flexible(
@@ -35,7 +36,7 @@ class WebLayout extends StatelessWidget {
                 ),
                 Expanded(
                   child: Center(
-                    child: Text('${controller.getScreenWidth(context)}'),
+                    child: Text("${controller.getScreenHeight(context)}x${controller.getScreenWidth(context)}"),
                   ),
                 ),
               ],

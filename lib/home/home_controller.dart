@@ -1,8 +1,16 @@
 import 'package:atu_msg_project/core/utilities/assets_manager.dart';
+import 'package:atu_msg_project/home/layouts/mobile_layout.dart';
+import 'package:atu_msg_project/home/layouts/tablet_layout.dart';
+import 'package:atu_msg_project/home/layouts/web_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+enum CurrentDevice {mobile, tablet, web}
 class HomeController {
+  
+  CurrentDevice currentDevice = CurrentDevice.mobile;
+
+
   final String title = "My App";
 
   final String logoPath = AssetsManager.atuLogo;
@@ -29,4 +37,21 @@ class HomeController {
 
   double getScreenWidth(BuildContext context) =>
       MediaQuery.sizeOf(context).width;
+  double getScreenHeight(BuildContext context) =>
+      MediaQuery.sizeOf(context).height;
+
+  set setCurrentDevice(CurrentDevice device) => currentDevice = device;
+
+  Widget setMobileLayout() {
+    currentDevice = CurrentDevice.mobile;
+    return MobileLayout();
+  }
+  Widget setTabletLayout() {
+    currentDevice = CurrentDevice.tablet;
+    return TabletLayout();
+  }
+  Widget setWebLayout() {
+    currentDevice = CurrentDevice.web;
+    return WebLayout();
+  }
 }

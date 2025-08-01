@@ -1,4 +1,5 @@
 import 'package:atu_msg_project/home/home_controller.dart';
+import 'package:atu_msg_project/home/widgets/chats_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,7 @@ class MobileLayout extends StatelessWidget {
           ),
           title: Text(controller.title),
         ),
-        body: Center(child: Text("normal")),
+        body: ChatsList(),
         bottomNavigationBar: BottomNavigationBar(items: controller.destinations.map((e) => BottomNavigationBarItem(icon: e.icon, label: e.label)).toList()),
       );
   }

@@ -1,8 +1,8 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:atu_msg_project/home/home_controller.dart';
 import 'package:atu_msg_project/home/home_page.dart';
-import 'package:atu_msg_project/theme/theme.dart';
-import 'package:atu_msg_project/theme/util.dart';
+import 'package:atu_msg_project/config/theme.dart';
+import 'package:atu_msg_project/config/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+
     TextTheme textTheme = createTextTheme(context, 'Fredoka', "Fredoka");
 
     return AdaptiveTheme(
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           darkTheme: darkTheme,
           home: Provider<HomeController>(
             create: (_) => HomeController(),
-            child: HomePage(),
+            child: SafeArea(child: HomePage()),
           ),
         );
       },
