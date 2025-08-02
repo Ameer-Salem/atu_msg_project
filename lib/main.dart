@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     TextTheme textTheme = createTextTheme(context, 'Fredoka', "Fredoka");
 
     return AdaptiveTheme(
