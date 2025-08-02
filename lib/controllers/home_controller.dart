@@ -1,23 +1,27 @@
-import 'package:atu_msg_project/core/utilities/assets_manager.dart';
-import 'package:atu_msg_project/home/layouts/mobile_layout.dart';
-import 'package:atu_msg_project/home/layouts/tablet_layout.dart';
-import 'package:atu_msg_project/home/layouts/web_layout.dart';
+import 'package:atu_msg_project/utilities/assets_manager.dart';
+import 'package:atu_msg_project/layouts/mobile_layout.dart';
+import 'package:atu_msg_project/layouts/tablet_layout.dart';
+import 'package:atu_msg_project/layouts/web_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-enum CurrentDevice {mobile, tablet, web}
-class HomeController {
-  
-  CurrentDevice currentDevice = CurrentDevice.mobile;
+enum CurrentDevice { mobile, tablet, web }
 
-
-  final String title = "My App";
+class MainController extends ChangeNotifier {
+  CurrentDevice? currentDevice;
+  int currentPageIndex = 0;
 
   final String logoPath = AssetsManager.atuLogo;
+  final SvgPicture _logo = SvgPicture.asset(
+    AssetsManager.atuLogo,
+    width: 48,
+    height: 48,
+  );
+  SvgPicture get logo => _logo;
 
-  SvgPicture logo = SvgPicture.asset(AssetsManager.atuLogo, width: 48, height: 48);
+  String title = "Home";
 
-  final List<NavigationDestination> destinations = [
+  List<NavigationDestination> get destinations => [
     NavigationDestination(
       label: ('Home'),
       icon: Icon(Icons.home),
@@ -28,11 +32,6 @@ class HomeController {
       icon: Icon(Icons.settings),
       selectedIcon: Icon(Icons.settings_rounded),
     ),
-    NavigationDestination(
-      label: ('About'),
-      icon: Icon(Icons.info),
-      selectedIcon: Icon(Icons.info_rounded),
-    ),
   ];
 
   double getScreenWidth(BuildContext context) =>
@@ -40,18 +39,31 @@ class HomeController {
   double getScreenHeight(BuildContext context) =>
       MediaQuery.sizeOf(context).height;
 
-  set setCurrentDevice(CurrentDevice device) => currentDevice = device;
-
   Widget setMobileLayout() {
     currentDevice = CurrentDevice.mobile;
     return MobileLayout();
   }
+
   Widget setTabletLayout() {
     currentDevice = CurrentDevice.tablet;
     return TabletLayout();
   }
+
   Widget setWebLayout() {
     currentDevice = CurrentDevice.web;
     return WebLayout();
+  }
+
+  void changePage(int index) {
+    switch (index) {
+      case 0:
+        title = "Home";
+        break;
+      case 1:
+        title = "Settings";
+        break;
+    }
+    currentPageIndex = index;
+    notifyListeners();
   }
 }
