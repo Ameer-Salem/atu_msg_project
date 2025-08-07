@@ -1,4 +1,4 @@
-import 'package:atu_msg_project/controllers/home_controller.dart';
+import 'package:atu_msg_project/controllers/main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

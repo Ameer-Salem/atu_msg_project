@@ -1,4 +1,4 @@
-import 'package:atu_msg_project/controllers/home_controller.dart';
+import 'package:atu_msg_project/controllers/main_controller.dart';
 import 'package:atu_msg_project/widgets/chats_list_widget.dart';
 import 'package:atu_msg_project/widgets/drawer_widget.dart';
 import 'package:atu_msg_project/widgets/messaging_widget.dart';

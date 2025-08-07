@@ -1,4 +1,4 @@
-import 'package:atu_msg_project/controllers/home_controller.dart';
+import 'package:atu_msg_project/controllers/main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,38 +8,36 @@ class ChatsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<MainController>(context);
-    bool isWeb = controller.currentDevice == CurrentDevice.web;
     return Column(
       children: [
-        if (isWeb)
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 18.0,
-              right: 4,
-              left: 0,
-              bottom: 8,
-            ),
-            child: Row(
-              spacing: 2,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 4),
-                  child: IconButton(
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    icon: Icon(Icons.menu_rounded),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 4),
-                    child: SearchBar(hintText: 'Search'),
-                  ),
-                ),
-              ],
-            ),
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 18.0,
+            right: 4,
+            left: 0,
+            bottom: 8,
           ),
+          child: Row(
+            spacing: 2,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 4),
+                child: IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  icon: Icon(Icons.menu_rounded),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 4),
+                  child: SearchBar(hintText: 'Search'),
+                ),
+              ),
+            ],
+          ),
+        ),
         Expanded(
           child: ListView.builder(
             itemCount: 15,

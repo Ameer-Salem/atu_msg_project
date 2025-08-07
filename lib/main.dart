@@ -1,6 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:atu_msg_project/config/flex_theme.dart';
-import 'package:atu_msg_project/controllers/home_controller.dart';
+import 'package:atu_msg_project/controllers/main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -50,7 +50,6 @@ class _MainPageState extends State<MainPage> {
     final width = controller.getScreenWidth(context);
 
     if (width >= 800) return controller.setWebLayout();
-    if (width >= 600) return controller.setTabletLayout();
     return controller.setMobileLayout();
   }
 }

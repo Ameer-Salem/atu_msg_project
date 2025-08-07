@@ -2,7 +2,6 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:atu_msg_project/models/user_model.dart';
 import 'package:atu_msg_project/utilities/assets_manager.dart';
 import 'package:atu_msg_project/layouts/mobile_layout.dart';
-import 'package:atu_msg_project/layouts/tablet_layout.dart';
 import 'package:atu_msg_project/layouts/web_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -59,11 +58,6 @@ class MainController extends ChangeNotifier {
   Widget setMobileLayout() {
     currentDevice = CurrentDevice.mobile;
     return MobileLayout();
-  }
-  //setters methods
-  Widget setTabletLayout() {
-    currentDevice = CurrentDevice.tablet;
-    return TabletLayout();
   }
 
   Widget setWebLayout() {
