@@ -1,3 +1,5 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:atu_msg_project/models/user_model.dart';
 import 'package:atu_msg_project/utilities/assets_manager.dart';
 import 'package:atu_msg_project/layouts/mobile_layout.dart';
 import 'package:atu_msg_project/layouts/tablet_layout.dart';
@@ -19,7 +21,7 @@ class MainController extends ChangeNotifier {
   );
   SvgPicture get logo => _logo;
 
-  String title = "Home";
+  String title = "ATU Messenger";
 
   List<NavigationDestination> get destinations => [
     NavigationDestination(
@@ -34,16 +36,31 @@ class MainController extends ChangeNotifier {
     ),
   ];
 
+  List<UserModel> users = List.generate(15, (index){
+    return UserModel(name: "User ${index + 1}", message: 'This is a message from user ${index + 1}');
+  });
+
+  //getters methods
   double getScreenWidth(BuildContext context) =>
       MediaQuery.sizeOf(context).width;
   double getScreenHeight(BuildContext context) =>
       MediaQuery.sizeOf(context).height;
+  AdaptiveThemeMode getAdaptiveThemeMode(BuildContext context) =>
+      AdaptiveTheme.of(context).mode;
+
+
+  IconData getThemeIcon(BuildContext context) {
+    final isDark = getAdaptiveThemeMode(context);
+    if (isDark == AdaptiveThemeMode.dark) return Icons.dark_mode_rounded;
+    if (isDark == AdaptiveThemeMode.light) return Icons.light_mode_rounded;
+    return Icons.monitor_outlined;
+  }
 
   Widget setMobileLayout() {
     currentDevice = CurrentDevice.mobile;
     return MobileLayout();
   }
-
+  //setters methods
   Widget setTabletLayout() {
     currentDevice = CurrentDevice.tablet;
     return TabletLayout();
@@ -54,16 +71,18 @@ class MainController extends ChangeNotifier {
     return WebLayout();
   }
 
+  //changers methods
   void changePage(int index) {
-    switch (index) {
-      case 0:
-        title = "Home";
-        break;
-      case 1:
-        title = "Settings";
-        break;
-    }
     currentPageIndex = index;
     notifyListeners();
+  }
+
+  void changeTitle(String title) {
+    this.title = title;
+    notifyListeners();
+  }
+  //other methods
+  void toggleTheme(BuildContext context) {
+    AdaptiveTheme.of(context).toggleThemeMode();
   }
 }

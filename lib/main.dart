@@ -1,7 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:atu_msg_project/config/flex_theme.dart';
 import 'package:atu_msg_project/controllers/home_controller.dart';
-import 'package:atu_msg_project/config/theme.dart';
-import 'package:atu_msg_project/config/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,11 +13,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = createTextTheme(context, 'Fredoka', "Fredoka");
-
+    //TextTheme textTheme = createTextTheme(context, 'Fredoka', "Fredoka");
+    ThemeData theme = AppTheme.light;
+    ThemeData darkTheme = AppTheme.dark;
     return AdaptiveTheme(
-      dark: MaterialTheme(textTheme).dark(),
-      light: MaterialTheme(textTheme).light(),
+      dark: darkTheme,
+      light: theme,
       initial: AdaptiveThemeMode.system,
       builder: (theme, darkTheme) {
         return MaterialApp(

@@ -12,7 +12,16 @@ class MobileLayout extends StatelessWidget {
     final controller = Provider.of<MainController>(context);
 
     return Scaffold(
+      
       appBar: AppBar(
+        actionsPadding: EdgeInsets.all(8),
+        actions: [
+          IconButton(
+            onPressed: () {
+              controller.toggleTheme(context);
+            },
+            icon: Icon(controller.getThemeIcon(context)),
+        )],
         leading: Padding(
           padding: const EdgeInsets.only(left: 8.0, top: 8, bottom: 8),
           child: controller.logo,
@@ -26,7 +35,7 @@ class MobileLayout extends StatelessWidget {
               case 1:
                 return const Options();
               default:
-                return const ChatsList();
+                return  ChatsList();
             }
           }),
       bottomNavigationBar: BottomNavigationBar(

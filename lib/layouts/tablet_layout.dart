@@ -1,5 +1,6 @@
 import 'package:atu_msg_project/controllers/home_controller.dart';
 import 'package:atu_msg_project/widgets/chats_list_widget.dart';
+import 'package:atu_msg_project/widgets/navigationrail_widget.dart';
 import 'package:atu_msg_project/widgets/options_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,19 +15,7 @@ class TabletLayout extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          NavigationRail(
-            leading: controller.logo,
-            selectedIndex: controller.currentPageIndex,
-            destinations: controller.destinations
-                .map(
-                  (e) => NavigationRailDestination(
-                    icon: e.icon,
-                    label: Text(e.label),
-                  ),
-                )
-                .toList(),
-            onDestinationSelected: (index) => controller.changePage(index),
-          ),
+          NavigationRailWidget(),
           VerticalDivider(),
           Expanded(
             child: Column(
@@ -44,7 +33,7 @@ class TabletLayout extends StatelessWidget {
                         case 1:
                           return const Options();
                         default:
-                          return const ChatsList();
+                          return  ChatsList();
                       }
                     },
                   ),
